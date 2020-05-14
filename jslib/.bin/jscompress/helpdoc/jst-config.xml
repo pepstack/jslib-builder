@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config key="ee258bb8af876af6b81021fe98e0af7c4,ff59665e0729f1c68427f37910f56e4"
+	boot-includes="boot-browser.js,log.js,core.js,#,final-browser.js">
+	<preload-group>
+		<preload>js/lang/__package__.js</preload>
+		<preload>js/html/__package__.js</preload>
+		<preload>js/html/event-util.js</preload>
+		<preload>js/html/style-util.js</preload>
+		<preload>js/html/browser-info.js</preload>
+		<preload>js/util/__package__.js</preload>
+		<preload>js/util/task-queue.js</preload>
+	</preload-group>
+	<!-- 
+	<copyright description="授权xidea开源项目使用,数据不可修改!!">
+		<![CDATA[
+/*
+ * Copyright www.xidea.org
+ * License LGPL
+ * Compressed by JSA(www.xidea.org)
+ */
+]]>
+	</copyright>
+	 -->
+	<copyright description="免费授权,数据不可修改!!">
+		<![CDATA[
+/*
+ * Compressed by JSA(www.xidea.org)
+ */
+]]>
+	</copyright>
+
+</config>
