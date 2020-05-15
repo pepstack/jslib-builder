@@ -12,7 +12,8 @@ var
         ,"./dep/encode.js"
         ,"./dep/security.js"
         ,"./src/error.js"
-        ,"./src/plugins/ecs.js"
+        ,"./src/plugins/Engine.js"
+        ,"./src/plugins/core/Canvas2d.js"
     ]
 ;
 

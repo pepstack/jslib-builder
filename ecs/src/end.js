@@ -4,13 +4,11 @@
  * public interfaces:
  */
 window.ecs = {};
-
-window.ecs.useAssets = function (assets) {
-    return JSLib.getInstance(assets);
-};
+window.ecs.core = {};
 
 /**
- * // export modules here:
- * window.jslib.YourModule = YourModule;
+ * export modules here:
  */
+window.ecs.Engine = Engine;
+window.ecs.core.Canvas2d = Canvas2d;
 }(window, jQuery));

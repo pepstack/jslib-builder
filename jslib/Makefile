@@ -117,10 +117,11 @@ min: lint css
 
 
 jscompress: min
-	@@cp ${DEP_DIR}/prerequisite.js ${DIST_LIBS}/tmp
-	@@cp ${DEP_DIR}/encode.js ${DIST_LIBS}/tmp
-	@@cp ${DEP_DIR}/security.js ${DIST_LIBS}/tmp
-	@@cp ${DIST_LIBS}/${MODULE_NAME}.js ${DIST_LIBS}/tmp
+	@@cp ${DEP_DIR}/prerequisite.js ${DIST_LIBS}/tmp/
+	@@cp ${DEP_DIR}/encode.js ${DIST_LIBS}/tmp/
+	@@cp ${DEP_DIR}/security.js ${DIST_LIBS}/tmp/
+	@@cp ${DIST_LIBS}/${MODULE_NAME}.js ${DIST_LIBS}/tmp/
+	@@cp ${DEP_DIR}/jquery-3.5.1.min.js ${DIST_LIBS}/
 	@@ant
 
 
