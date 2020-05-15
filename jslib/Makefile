@@ -58,7 +58,7 @@ VER = sed s/@VERSION/${MODULE_VER}/
 DATE=`git log --pretty=format:'%ad' -1`
 
 
-all: clean lint update
+all: clean lint
 	@@echo ${PLUGIN_JS}
 	@@echo "[info] all built success."
 
@@ -98,7 +98,7 @@ css: init ${CSS_MODULES}
 	@@echo "Success!"
 
 
-min: init css
+min: lint css
 	@@if test ! -z ${JS_ENGINE}; then \
 		echo -n "[info] Minifying "${MODULE_NAME}" ..."; \
 		head -18 ${MODULE} > ${MODULE_MIN}; \
@@ -114,7 +114,7 @@ min: init css
 	@@echo "[info] Success!"
 
 
-jscompress:
+jscompress: min
 	@@cp ${DEP_DIR}/prerequisite.js ${DIST_SCRIPT}/tmp
 	@@cp ${DEP_DIR}/encode.js ${DIST_SCRIPT}/tmp
 	@@cp ${DEP_DIR}/security.js ${DIST_SCRIPT}/tmp
@@ -122,7 +122,7 @@ jscompress:
 	@@ant
 
 
-update: min jscompress
+update: jscompress
 	@@echo "[info] Update success!"
 
 
@@ -131,4 +131,4 @@ clean:
 	@@rm -rf ${BUILD_DIR}
 	@@rm -rf ${DIST_DIR}
 
-.PHONY: clean update
+.PHONY: clean

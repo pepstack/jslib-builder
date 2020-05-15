@@ -15,8 +15,6 @@ all:
 	done;
 
 
-.PHONY: clean update
-
 update:
 	@list='$(SUBDIRS)';\
 	for subdir in $$list; do\
@@ -31,3 +29,6 @@ clean:
 		echo "-------- clean in $$subdir";\
         (cd $$subdir && make $@);\
     done;
+
+
+.PHONY: clean update

@@ -1,8 +1,8 @@
 # jslib-builder
 
-A javascript lib build tool.
+A set of tool for developing and building javascript library.
 
-## Environment
+## Environment Requirement
 
 - Windows
 
@@ -11,7 +11,7 @@ A javascript lib build tool.
 - cygwin64
 
 
-## Prerequisities
+## Build Prerequisities
 
 - jdk-8u162-windows-x64.zip
 
@@ -22,7 +22,19 @@ A javascript lib build tool.
 
 ## How to build
 
-cd jslib-builder/
+### Build all projects
 
-make
+    cd jslib-builder/
+
+    make
+
+    make update
+
+### Build a specified project
+
+    cd jslib-builder/
+
+    cd jslib
+
+    make lint
 
