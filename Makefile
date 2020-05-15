@@ -1,10 +1,6 @@
 PREFIX = .
 
-JSLIB_DIR = ${PREFIX}/jslib
-
-DUMMY_DIR =
-
-SUBDIRS =  ${JSLIB_DIR} ${DUMMY_DIR}
+SUBDIRS =  ${PREFIX}/jslib ${PREFIX}/ecs
 
 
 all:

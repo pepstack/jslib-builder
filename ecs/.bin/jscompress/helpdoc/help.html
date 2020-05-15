@@ -1,0 +1,113 @@
+
+<h2>UI</h2>
+<ul>
+  <li>JAVA1.4.2+ 当jar打开方式为java时,可<b>双击运行</b>，但,若JAR打开方式被修改（如winrar），请使用如下方式：<br>
+  CMD&gt;java -jar xx.jar</li>
+  <li>自动编码识别</li>
+  <li>支持文件拖放</li>
+</ul>
+<h2>ANT Task</h2>
+<ul>
+  <li>默认编码
+  ：取JRE的默认编码，可能随机器不同而改变，所以，推荐手动指定器编码方式（eg:charset="utf-8"/charset="GBK"）</li>
+  <li>jsicompile 任务：编译jsi（压缩，预装载编译，定制启动文件）</li>
+  <li>jscompress 压缩脚本，支持分组合并(filegroup)，完整打包(allInOneFileName)</li>
+</ul>
+<h2>示例</h2>
+<ul>
+  <h3>ANT任务定义</h3>
+  <textarea rows="2" cols="50">
+    &lt;taskdef resource="jst-task.properties" classpath="build/lib/JSA.jar" /&gt;
+  </textarea>
+
+  <h3>js<b color='red'>i</b>compiler 示例</h3>
+  <textarea rows="10" cols="50">
+  &lt;target name="compress"&gt;
+    &lt;jsicompiler destDir="ant/temp/scripts2" charset="utf-8"
+      bootFileName="boot.js"
+      syntaxcompression="true"
+      textcompression="false"
+      compatible="true"&gt;
+      &lt;fileset dir="web/scripts"&gt;
+        &lt;include name="*/**/*.js" /&gt;
+        &lt;include name="*.js" /&gt;
+        &lt;exclude name="*/**/*__preload__.js" /&gt;
+      &lt;/fileset&gt;
+    &lt;/jsicompiler&gt;
+  &lt;/target&gt;
+  </textarea>
+  <h3>jscompress 示例</h3>
+  <p>注意：如果合并文件有顺序，那么必须先后放在不同的fileset中，因为ant的fileset内部是无序的。</p>
+  <textarea rows="18" cols="50">
+    &lt;jscompress destDir="build/temp/scripts2" charset="utf-8"
+      allInOneFileName="all.js"
+      syntaxcompression="false"
+      textcompression="false"
+      compatible="true"&gt;
+      &lt;fileset dir="web/scripts"&gt;
+        &lt;include name="js/util/task-queue.js" /&gt;
+      &lt;/fileset&gt;
+      &lt;fileset dir="web/scripts"&gt;
+        &lt;include name="js/**/*.*" /&gt;
+        &lt;include name="*.js" /&gt;
+      &lt;/fileset&gt;
+      &lt;filegroup path="html.js"&gt;
+        &lt;fileset dir="web/scripts"&gt;
+          &lt;include name="js/html/*.js" /&gt;
+        &lt;/fileset&gt;
+      &lt;/filegroup&gt;
+      &lt;filegroup path="util.js"&gt;
+        &lt;fileset dir="web/scripts"&gt;
+          &lt;include name="js/util/task-queue.js" /&gt;
+        &lt;/fileset&gt;
+        &lt;fileset dir="web/scripts"&gt;
+          &lt;include name="js/util/*.js" /&gt;
+        &lt;/fileset&gt;
+      &lt;/filegroup&gt;
+    &lt;/jscompress&gt;
+  </textarea>
+  <h3>API调用</h3>
+  <p>子JSA2开始，我们对外提供了API调用接口</p>
+  <textarea rows="18" cols="50">
+/*
+ * compress(String, String)
+ * compress(String, String, boolean, boolean)
+ * format(String)
+ * getCompatible()
+ * getRatioConditionForTextCompression()
+ * getSizeConditionForTextCompression()
+ * getSyntaxCompression()
+ * getTextCompression()
+ * setCompatible(boolean)
+ * setGlobalReplacerHolder(GlobalReplacerHolder)
+ * setRatioConditionForTextCompression(double)
+ * setSizeConditionForTextCompression(int)
+ * setSyntaxCompression(boolean)
+ * setTextCompression(boolean)
+ */
+JavaScriptCompressor compressor = JSIToolkit.getInstance().getCompressorImpl();
+/*
+ * analyse(String, String)
+ * getErrorString()
+ * getExternalVariableNameCollection()
+ * getLocalVariableNameCollection()
+ * getReservedVariableNameCollection()
+ * getUnknowVariableNameCollection()
+ */
+JavaScriptAnalyser analyser = JSIToolkit.getInstance().getAnalyserImpl();
+
+/*
+ * EMPTY : GlobalReplacerHolder
+ * getGlobalReplacer(String, String)
+ */
+GlobalReplacerHolder globalReplacerHolder;
+
+/*
+ * EMPTY : GlobalReplacer
+ * getReplacedName(String)
+ * newVaribaleName()
+ */
+GlobalReplacer globalReplacer;
+  </textarea>
+</ul>
+<p>若有不明之处，也可以通过我们的邮件列表询问：http://forum.xidea.org</p>

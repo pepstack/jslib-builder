@@ -32,9 +32,35 @@ A set of tool for developing and building javascript library.
 
 ### Build a specified project
 
-    cd jslib-builder/
+    $ cd jslib-builder/
 
-    cd jslib
+    $ cd jslib
 
-    make lint
+    $ make lint
 
+### Create a your project
+
+In my case the name of project is ecs (Entity, Component and System), refer to:
+    
+    [What is an Entity Component System architecture for game development?](https://www.richardlord.net/blog/ecs/what-is-an-entity-framework.html)
+
+
+    $ cd jslib-builder/
+
+    $ cp -r jslib ecs
+
+Find SUBDIRS in 'jslib-builder/Makefile' and change it as below:
+    
+    SUBDIRS =  ${PREFIX}/jslib ${PREFIX}/ecs
+    
+    $ cd ecs/
+    
+Find MODULE_NAME in 'jslib-builder/ecs/Makefile' and change it as the following:
+    
+    MODULE_NAME = ecs
+
+    $ make
+
+
+
+    
