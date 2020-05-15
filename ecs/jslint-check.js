@@ -5,13 +5,14 @@
  * CHANGE js_files FOR CHECKING
  */
 var
-    jslint_path = "./.bin/JSLint/jslint",
+    jslint_path = "./bin/JSLint/jslint",
     js_files = [
-        "./.dep/prerequisite.js" /* 0 was ignored */
-        ,"./.dep/security.js"
-        ,"./.dep/encode.js"
-        ,"./.dep/security.js"
+        "./dep/prerequisite.js" /* 0 was ignored */
+        ,"./dep/security.js"
+        ,"./dep/encode.js"
+        ,"./dep/security.js"
         ,"./src/error.js"
+        ,"./src/plugins/ecs.js"
     ]
 ;
 

@@ -6,8 +6,8 @@ MODULE_NAME = jslib
 PREFIX = .
 
 # build tools dir
-BIN_DIR = ${PREFIX}/.bin
-DEP_DIR = ${PREFIX}/.dep
+BIN_DIR = ${PREFIX}/bin
+DEP_DIR = ${PREFIX}/dep
 
 # source dirs
 SRC_DIR = ${PREFIX}/src
