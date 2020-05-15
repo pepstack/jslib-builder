@@ -17,7 +17,9 @@ ASSETS_DIR = ${PREFIX}/assets
 # intermediate dirs
 BUILD_DIR = ${PREFIX}/build
 DIST_DIR = ${PREFIX}/dist
-DIST_SCRIPT = ${DIST_DIR}/script
+
+# distribution dirs
+DIST_LIBS = ${DIST_DIR}/libs
 DIST_ASSETS = ${DIST_DIR}/assets
 DIST_CSSDIR = ${DIST_DIR}/css
 
@@ -40,8 +42,8 @@ CSS_MODULES = ${SRC_DIR}/header.txt\
 MODULE_JS = ${MODULE_NAME}.js
 MODULE_MIN_JS = ${MODULE_NAME}.min.js
 
-MODULE = ${DIST_DIR}/script/${MODULE_JS}
-MODULE_MIN = ${DIST_DIR}/script/${MODULE_MIN_JS}
+MODULE = ${DIST_LIBS}/${MODULE_JS}
+MODULE_MIN = ${DIST_LIBS}/${MODULE_MIN_JS}
 
 MODULE_CSS = ${DIST_DIR}/css/${MODULE_NAME}.css
 MODULE_CSS_MIN = ${DIST_DIR}/css/${MODULE_NAME}.min.css
@@ -65,7 +67,7 @@ all: clean lint
 
 ${DIST_DIR}:
 	@@mkdir -p $@
-	@@mkdir -p ${DIST_SCRIPT}/tmp
+	@@mkdir -p ${DIST_LIBS}/tmp
 	@@mkdir -p ${DIST_ASSETS}
 	@@mkdir -p ${DIST_CSSDIR}
 
@@ -115,14 +117,15 @@ min: lint css
 
 
 jscompress: min
-	@@cp ${DEP_DIR}/prerequisite.js ${DIST_SCRIPT}/tmp
-	@@cp ${DEP_DIR}/encode.js ${DIST_SCRIPT}/tmp
-	@@cp ${DEP_DIR}/security.js ${DIST_SCRIPT}/tmp
-	@@cp ${DIST_SCRIPT}/${MODULE_NAME}.js ${DIST_SCRIPT}/tmp
+	@@cp ${DEP_DIR}/prerequisite.js ${DIST_LIBS}/tmp
+	@@cp ${DEP_DIR}/encode.js ${DIST_LIBS}/tmp
+	@@cp ${DEP_DIR}/security.js ${DIST_LIBS}/tmp
+	@@cp ${DIST_LIBS}/${MODULE_NAME}.js ${DIST_LIBS}/tmp
 	@@ant
 
 
 update: jscompress
+	@@cp -r ${TEST_DIR}/script ${DIST_DIR}/
 	@@echo "[info] Update success!"
 
 

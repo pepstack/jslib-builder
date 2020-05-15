@@ -18,4 +18,12 @@ In addition to this project, you might have knowledge of directory structure of 
         |       |
         |       +---- plugins/
         |
-        +---- test/     (test scripts, html, ...)
+        +---- test/     (devel or test files, html pages ...)
+        .
+        .
+        +---- build/    (build temporary files. DO NOT commit it to source code tree)
+        .
+        +---- dist/     (distribution files)
+
+       
+        

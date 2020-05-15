@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="jsa" basedir="." default="jscompress">
     <taskdef resource="jst-task.properties" classpath="bin/jscompress/JSA-20071021.jar" />
-    <property name="src.dir" value="./dist/script/tmp" />
-    <property name="dist.dir" value="./dist/script" />
+    <property name="src.dir" value="./dist/libs/tmp" />
+    <property name="dist.dir" value="./dist/libs" />
 
     <property name="project.name" value="jslib" />
 

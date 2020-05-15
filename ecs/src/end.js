@@ -3,9 +3,9 @@
  * end.js
  * public interfaces:
  */
-window.jslib = {};
+window.ecs = {};
 
-window.jslib.useAssets = function (assets) {
+window.ecs.useAssets = function (assets) {
     return JSLib.getInstance(assets);
 };
 

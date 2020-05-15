@@ -49,15 +49,21 @@ In my case the name of project is ecs (Entity, Component and System), refer to:
 
     $ cp -r jslib ecs
 
-Find SUBDIRS in 'jslib-builder/Makefile' and change it as below:
+    After copying, mainly edit below 3 files in your project (jslib-builder/ecs/):
     
-    SUBDIRS =  ${PREFIX}/jslib ${PREFIX}/ecs
+    - Makefile          'MODULE_NAME = ecs'
     
-    $ cd ecs/
+    - build.xml         '<property name="project.name" value="ecs" />'
     
-Find MODULE_NAME in 'jslib-builder/ecs/Makefile' and change it as the following:
+    - jslint-check.js   'js_files = [... "./src/plugins/ecs.js"]'
     
-    MODULE_NAME = ecs
+
+    Add ${PREFIX}/ecs to SUBDIRS in jslib-builder/Makefile as below:
+    
+        SUBDIRS =  ${PREFIX}/jslib ${PREFIX}/ecs
+    
+
+    Run make to build all projects in jslib-builder/
 
     $ make
 
